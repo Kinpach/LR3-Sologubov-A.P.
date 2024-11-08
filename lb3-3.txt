@@ -1,0 +1,85 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
+/* Дано название города. Определить, четно или нет количество символов в нем.
+
+  1 Даны две фамилии. Определить, какая из них длиннее.
+
+  2 Даны названия трех городов. Вывести на экран самое длинное и самое короткое название.
+
+  3 Дано слово. Получить его часть, образованную идущими подряд буквами, начиная с m-й и кончая n-й.
+
+  4 Дано слово. Добавить к нему в начале и конце столько звездочек, сколько букв в этом слове.
+
+  5 Дано предложение. Определить долю (в %) букв 'a' в нем.
+
+  6 Дано предложение "Can you can a can as a canner can can a can?". Заменить все слова can на слово news (news вводится с клавиатуры)
+*/
+void function1(){
+  string s;
+  cout << "Введите название города: ";
+  cin >> s;
+  cout << s.length() << endl;
+}
+
+void function2(){
+  string a, b;
+  cin >> a;
+  cin >> b;
+  if (a.length() > b.length()) cout << "Первая фамилия длиннее";
+  else if (a.length() < b.length()) cout << "Вторая фамилия длиннее";
+  else cout << "Фамилии одинаковой длины";
+  cout << endl;
+}
+
+void function3(){
+  string s, result;
+  cin >> s;
+  int n, m;
+  cin >> n >> m;
+  for (int i = n - 1; i < m; i++) result += s[i];
+  cout << result << endl;
+}
+
+void function4(){
+  string s;
+  getline(cin, s);
+  int n = s.size();
+  for (int i = 0; i < n; i++) s = "*" + s + "*";
+  cout << s << endl;
+}
+
+void function5(){
+  string s;
+  getline(cin, s);
+  int counter = 0;
+  for (int i = 0; i < s.size(); i ++){
+    if (s[i] == 'a') counter ++;
+  }
+  cout << counter << endl;
+}
+
+void function6(){
+  string s = "Can you can a can as a canner can can a can?";
+  string s2 = "";
+  string newWord;
+  cout<<"Введите newWord: ";
+  cin>>newWord;
+  for (int i = 0; i < s.length(); i++){
+    if ((s[i] == 'c' || s[i] == 'C') && s[i+1] == 'a' && s[i+2] == 'n' && (s[i+3] == ' ' || s[i+3] == '?')){
+      s2 += newWord;
+      i += 2;
+    }
+    else{
+      s2 += s[i];
+    }
+  }
+  cout<<s2;
+}
+
+int main(){
+  function6();
+
+  
+}
