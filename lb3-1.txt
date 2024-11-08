@@ -1,0 +1,97 @@
+#include <vector>
+#include <iostream>
+using namespace std;
+
+
+double function1(vector<double> array){
+  double x0 = 0;
+  for(int i = 0; i < array.size(); i++){
+    x0 += array[i];
+  }
+  return x0;
+}
+
+double function2(vector<double> array){
+  double x0 = 0;
+  for(int i = 0; i < array.size(); i++){
+    x0 += array[i]*array[i];
+  }
+  return x0;
+}
+
+double function3(vector<double> array){
+  double x0 = 0;
+  for(int i = 0; i < 6; i++){
+    x0 += array[i];
+  }
+  return x0;
+}
+
+double function4(vector<double> array){
+  int k1, k2;
+  cout << "Введите k1, k2: ";
+  cin >> k1 >> k2;
+  double x0 = 0;
+  for(int i = k1 - 1; i <= k2; i++){
+    x0 += array[i];
+  }
+  return x0;
+}
+
+double function5(vector<double> array){
+  double x0 = 0;
+  for(int i = 0; i < array.size(); i++){
+    x0 += array[i];
+  }
+  return x0 / array.size();
+}
+
+double function6(vector<double> array){
+  int s1, s2;
+  double sum = 0;
+
+  cout << "Введите s1, s2: ";
+  cin >> s1 >> s2;
+  for(int i = s1 - 1; i <= s2; i++){
+    sum += array[i];
+  }
+  
+  if (s1 == s2) return 0;
+  return sum / (s2 - s1 + 1);
+}
+
+int main() {
+  vector <double> array;
+  
+  int n;
+  cout << "Введите число элементов массива: ";
+  cin >> n;
+
+  for (int i = 0; i < n; i++){
+    array.push_back(0);
+    cin >> array[i];
+  }
+
+  int a;
+  cout << "Введите число a: ";
+  cin >> a;
+
+  //Первоначальные преобразования масива
+  for (int i = 0; i < n; i++){
+    array[i] = array[i] * 2;
+    array[i] = array[i] - a;
+  }
+  for (int i = n - 1; i >= 0; i--) array[i] = array[i] / array[0];
+
+  for(int i = 0; i < array.size(); i++)
+    cout << array[i] << " ";
+  cout << endl;
+  cout << "Сумма всех эдементов массива: " << function1(array) << endl;
+  cout << "Сумма квадратов всех элементов массива: " << function2(array) << endl;
+  cout << "Сумма шести первых элементов массива: " << function3(array) << endl;
+  cout << "Сумма элементов массива с k1-го по k2й: " << function4(array) << endl;
+  cout << "Среднее арифметическое всех элементов массива: " << function5(array) << endl;
+  cout << "Среднее арифметическое элементов массива с s1-го по s2-й: " << function6(array) << endl;
+  
+}
+
