@@ -1,0 +1,46 @@
+#include <vector>
+#include <iostream>
+using namespace std;
+
+void swap(int a, int b, vector<int> &v){
+  int tmp;
+  tmp = v[a];
+  v[a] = v[b];
+  v[b] = tmp;
+}
+
+int main() {
+  vector <int> v;
+  
+  for (int i = 0; i < 20; i++) {
+    v.push_back(i);
+    cin >> v[i];
+  }
+  int n = v.size();
+
+  for (int i = 0; i < 3; i++) {
+    swap(i, i + n - 3, v);
+  }
+
+  for (int i = 0; i < n; i++)
+    cout << v[i] << " ";
+  cout << endl;
+
+  for (int i = 0; i < n; i++){
+    if (v[i] < 0){
+      v.erase(v.begin() + i);
+      break;
+    }
+  }
+  for (int i = v.size() - 1; i > -1; i --){
+    if (abs(v[i]) % 2 == 0){
+      v.erase(v.begin() + i);
+      break;
+    }
+  }
+
+
+
+  for (int i = 0; i < v.size(); i++)
+    cout << v[i] << " ";
+}
