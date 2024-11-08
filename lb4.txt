@@ -1,0 +1,83 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+float mean(const std::vector<float> v){
+    int x0 = v.size();
+    float s = 0;
+    for(int i = 0; i < x0; i++){
+        s+= v[i];
+    }
+    return s/x0;
+}
+
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+std::pair<float, float> minMax(const std::vector<float> v){
+    float min = 10000000000;
+    float max = -10000000000;
+    for(int i = 0; i < v.size(); ++i){
+        if (v[i]>max){
+            max = v[i];
+        }
+        if (v[i]<min){
+            min = v[i];
+        }
+    }
+    pair<float, float> p(min, max);
+    return p;
+}
+
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int argmax(vector<float> v){
+    int x0 = -1;
+    float max = -100000000000;
+    for(int i = 0; i<v.size(); ++i){
+        if(v[i]>max){
+            max = v[i];
+            x0 = i;
+        }
+    }
+    return x0;
+}
+
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void sort(std::vector<float> &v){
+    vector<float> v2  = {};
+    float max;
+    int x;
+    while(v.size()!=0){
+        max = -100000000;
+        for(int i = 0; i < v.size(); ++i){
+            if (v[i]>max){
+                max = v[i];
+                x=i;
+            }
+        }
+        v.erase(v.begin() + x);
+        v2.push_back(max);
+    }
+    for(int i = 0; i<v2.size(); ++i){
+        v.push_back(0);
+    }
+    for(int i = 0; i<v2.size(); ++i){
+        v[i]=v2[i];
+    }
+}
+
+
+
